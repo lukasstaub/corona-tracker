@@ -11,7 +11,7 @@ CountryRedirect.getInitialProps = async (ctx) => {
     const countries: { data: Country[] } = await Axios.get("https://covid19-api.org/api/countries");
 
     //@ts-expect-error
-    const country = countries.data.find((el) => el.name.toLowerCase() === ctx.query.country!.toLowerCase());
+    const country = countries.data.find((el) => el.name.toLowerCase() === ctx.query.country!.toLowerCase() || el.alpha2.toLocaleLowerCase() === ctx.query.country!.toLowerCase() || el.alpha3.toLowerCase() === ctx.query.country!.toLowerCase());
 
     if (country) {
         ctx.res.writeHead(302, {

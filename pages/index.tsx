@@ -23,7 +23,8 @@ const GlobalOverview: NextPage<{ data: TimelineObject[]; lang: string; countries
     const today = data[63]!;
     const yesterday = data[62]!;
     const twoDaysAgo = data[61]!;
-    const compared = yesterday.total_cases - twoDaysAgo.total_cases;
+    const balanceYesterday = yesterday.total_cases - twoDaysAgo.total_cases;
+    const comparedYesterday = today.total_cases - yesterday.total_cases;
 
     return (
         <>
@@ -38,28 +39,54 @@ const GlobalOverview: NextPage<{ data: TimelineObject[]; lang: string; countries
                     </Grid>
                 )}
                 <Grid item container spacing={2}>
-                    <Grid item xs={12} md={3}>
-                        <Card style={CardStyle}>
-                            <Typography variant="h6" style={{ position: "absolute" }}>
-                                {locales.confirmed}:
-                            </Typography>
-                            <Typography variant="h4" style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)" }}>
-                                {Intl.NumberFormat(lang).format(today.total_cases)}
-                            </Typography>
-                        </Card>
-                    </Grid>
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={2}>
                         <Card style={CardStyle}>
                             <Typography variant="h6" style={{ position: "absolute" }}>
                                 {locales.compared}:
                             </Typography>
-                            <Typography variant="h4" style={{ color: compared < 0 ? "green" : compared === 0 ? "inherit" : "red", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)" }}>
-                                {compared > 0 ? "+" : null}
-                                {Intl.NumberFormat(lang).format(compared)}
+
+                            <Typography variant="h4" style={{ color: balanceYesterday < 0 ? "green" : balanceYesterday === 0 ? "inherit" : "red", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)" }}>
+                                {balanceYesterday > 0 ? "+" : null}
+                                {Intl.NumberFormat(lang).format(balanceYesterday)}
+                            </Typography>
+
+                            <Typography color="textSecondary" style={{ position: "absolute", left: 8, bottom: 4 }}>
+                                {locales.formatString(locales.lastUpdate, new Date(yesterday.last_update).toLocaleString())}
                             </Typography>
                         </Card>
                     </Grid>
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={2}>
+                        <Card style={CardStyle}>
+                            <Typography variant="h6" style={{ position: "absolute" }}>
+                                {locales.comparedToYesterday}:
+                            </Typography>
+
+                            <Typography variant="h4" style={{ color: comparedYesterday < 0 ? "green" : comparedYesterday === 0 ? "inherit" : "red", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)" }}>
+                                {comparedYesterday > 0 ? "+" : null}
+                                {Intl.NumberFormat(lang).format(comparedYesterday)}
+                            </Typography>
+
+                            <Typography color="textSecondary" style={{ position: "absolute", left: 8, bottom: 4 }}>
+                                {locales.formatString(locales.lastUpdate, new Date(today.last_update).toLocaleString())}
+                            </Typography>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} md={4}>
+                        <Card style={CardStyle}>
+                            <Typography variant="h6" style={{ position: "absolute" }}>
+                                {locales.confirmed}:
+                            </Typography>
+
+                            <Typography variant="h3" style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)" }}>
+                                {Intl.NumberFormat(lang).format(today.total_cases)}
+                            </Typography>
+
+                            <Typography color="textSecondary" style={{ position: "absolute", left: 8, bottom: 4 }}>
+                                {locales.formatString(locales.lastUpdate, new Date(today.last_update).toLocaleString())}
+                            </Typography>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} md={2}>
                         <Card style={CardStyle}>
                             <Typography variant="h6" style={{ position: "absolute" }}>
                                 {locales.recovered}:
@@ -68,9 +95,13 @@ const GlobalOverview: NextPage<{ data: TimelineObject[]; lang: string; countries
                             <Typography variant="h4" style={{ color: "green", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)" }}>
                                 {Intl.NumberFormat(lang).format(today.total_recovered)}
                             </Typography>
+
+                            <Typography color="textSecondary" style={{ position: "absolute", left: 8, bottom: 4 }}>
+                                {locales.formatString(locales.lastUpdate, new Date(today.last_update).toLocaleString())}
+                            </Typography>
                         </Card>
                     </Grid>
-                    <Grid item xs={12} md={3}>
+                    <Grid item xs={12} md={2}>
                         <Card style={CardStyle}>
                             <Typography variant="h6" style={{ position: "absolute" }}>
                                 {locales.deaths}:
@@ -78,6 +109,10 @@ const GlobalOverview: NextPage<{ data: TimelineObject[]; lang: string; countries
 
                             <Typography variant="h4" style={{ color: "red", margin: "auto", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)" }}>
                                 {Intl.NumberFormat(lang).format(today.total_deaths)}
+                            </Typography>
+
+                            <Typography color="textSecondary" style={{ position: "absolute", left: 8, bottom: 4 }}>
+                                {locales.formatString(locales.lastUpdate, new Date(today.last_update).toLocaleString())}
                             </Typography>
                         </Card>
                     </Grid>

@@ -11,9 +11,12 @@ export default new LocalizedStrings({
         recovered: "Geheilt",
         confirmed: "Bestätigte Fälle",
         compared: "Gestrige Bilanz",
+        comparedToYesterday: "Vergleich zu Gestern",
         deaths: "Tote",
 
         infected: "Infizierte",
+
+        lastUpdate: "Stand: {0}",
 
         chartTitleGlobal: "Globale Entwicklung der letzten 64 Tage",
         chartTitleCountry: "Entwicklung der letzten 64 Tage in {0}",
@@ -28,9 +31,12 @@ export default new LocalizedStrings({
         recovered: "Recovered",
         confirmed: "Confirmed cases",
         compared: "Yesterday's balance",
+        comparedToYesterday: "Compared to yesterday",
         deaths: "Deaths",
 
         infected: "Infected",
+
+        lastUpdate: "Updated: {0}",
 
         chartTitleGlobal: "Global chart of the last 64 days",
         chartTitleCountry: "Chart for {0} of the last 64 days",
