@@ -142,9 +142,12 @@ GlobalOverview.getInitialProps = async (ctx) => {
     const data = await Axios.get(`https://covid19-api.org/api/timeline/${ctx.query.country}`);
     const countries = await Axios.get("https://covid19-api.org/api/countries");
 
+    const fetchedData: CountryTimelineObject[] = data.data;
+
     let finalData: CountryTimelineObject[] = [];
+
     for (let i = 0; i < 64; i++) {
-        finalData.push(data.data[i]);
+        finalData.push(fetchedData[i]);
     }
 
     return { data: finalData.sort((a, b) => new Date(a.last_update).getTime() - new Date(b.last_update).getTime()), lang: ctx.req.headers["accept-language"].split(",")[0], countries: countries.data };
