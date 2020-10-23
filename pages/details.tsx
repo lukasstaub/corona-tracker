@@ -41,7 +41,7 @@ const GlobalOverview: NextPage<{ data: CountryTimelineObject[]; lang: string; co
                     </Grid>
                 )}
                 <Grid item container spacing={2}>
-                    <Grid item xs={12} md={2}>
+                    <Grid item xs={12} md={6} lg={2}>
                         <Card style={CardStyle}>
                             <Typography variant="h6" style={{ position: "absolute" }}>
                                 {locales.compared}:
@@ -57,7 +57,7 @@ const GlobalOverview: NextPage<{ data: CountryTimelineObject[]; lang: string; co
                             </Typography>
                         </Card>
                     </Grid>
-                    <Grid item xs={12} md={2}>
+                    <Grid item xs={12} md={6} lg={2}>
                         <Card style={CardStyle}>
                             <Typography variant="h6" style={{ position: "absolute" }}>
                                 {locales.comparedToYesterday}:
@@ -73,7 +73,7 @@ const GlobalOverview: NextPage<{ data: CountryTimelineObject[]; lang: string; co
                             </Typography>
                         </Card>
                     </Grid>
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={12} lg={4}>
                         <Card style={CardStyle}>
                             <Typography variant="h6" style={{ position: "absolute" }}>
                                 {locales.confirmed}:
@@ -88,7 +88,7 @@ const GlobalOverview: NextPage<{ data: CountryTimelineObject[]; lang: string; co
                             </Typography>
                         </Card>
                     </Grid>
-                    <Grid item xs={12} md={2}>
+                    <Grid item xs={12} md={6} lg={2}>
                         <Card style={CardStyle}>
                             <Typography variant="h6" style={{ position: "absolute" }}>
                                 {locales.recovered}:
@@ -103,7 +103,7 @@ const GlobalOverview: NextPage<{ data: CountryTimelineObject[]; lang: string; co
                             </Typography>
                         </Card>
                     </Grid>
-                    <Grid item xs={12} md={2}>
+                    <Grid item xs={12} md={6} lg={2}>
                         <Card style={CardStyle}>
                             <Typography variant="h6" style={{ position: "absolute" }}>
                                 {locales.deaths}:
