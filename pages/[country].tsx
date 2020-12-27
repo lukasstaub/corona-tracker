@@ -4,7 +4,7 @@ import Axios from "axios";
 import { Country } from "../src/config";
 
 const CountryRedirect: NextPage = () => {
-    return <div></div>;
+    return <></>;
 };
 
 CountryRedirect.getInitialProps = async (ctx) => {
@@ -26,8 +26,6 @@ CountryRedirect.getInitialProps = async (ctx) => {
         ctx.res.end();
         return;
     }
-
-    return {};
 };
 
 export default CountryRedirect;

@@ -31,7 +31,7 @@ const Navbar: React.FC<{ countries: Country[] }> = ({ countries }) => {
                 <List>
                     {countries.map((country) => {
                         return (
-                            <ListItem button onClick={() => goToCountry(country)}>
+                            <ListItem button key={country.name} onClick={() => goToCountry(country)}>
                                 {country.name}
                             </ListItem>
                         );
